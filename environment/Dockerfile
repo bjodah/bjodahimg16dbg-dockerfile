@@ -4,11 +4,11 @@ MAINTAINER Björn Dahlgren <bjodah@DELETEMEgmail.com>
 RUN \
     apt-get update && apt-get --quiet --assume-yes --no-install-recommends install libboost-dbg && \
     apt-get clean && \
-    export PATH=/root/.local:$PATH && mkdir -p /root/.local && cd /tmp && \
+    export PATH=/root/.local/bin:$PATH && mkdir -p /root/.local && cd /tmp && \
     wget --quiet https://www.python.org/ftp/python/3.4.5/Python-3.4.5.tgz -O py34.tgz && \
     tar xzf py34.tgz && cd Python* && ./configure --with-pydebug --prefix /root/.local && make -s && \
-    make install && mv ~/.local/bin/python3 ~/.local/bin/python3.4-dbg && \
-    wget https://bootstrap.pypa.io/get-pip.py && python3.4-dbg get-pip.py --user && \
+    make install && mv /root/.local/bin/python3 /root/.local/bin/python3.4-dbg && \
+    wget --quiet https://bootstrap.pypa.io/get-pip.py && python3.4-dbg get-pip.py --user && \
     DISTUTILS_DEBUG=1 python3.4-dbg -m pip install --no-binary :all: --global-option build --global-option --debug --user numpy cython scipy matplotlib && \
     mkdir -p /root/.config/matplotlib/ && \
     echo "backend: Agg" > /root/.config/matplotlib/matplotlibrc && \
