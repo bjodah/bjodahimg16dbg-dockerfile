@@ -12,6 +12,5 @@ RUN \
     DISTUTILS_DEBUG=1 python3.4-dbg -m pip install --no-binary :all: --global-option build --global-option --debug --user numpy cython scipy matplotlib && \
     mkdir -p /root/.config/matplotlib/ && \
     echo "backend: Agg" > /root/.config/matplotlib/matplotlibrc && \
-    sed -i 's/TkAgg/Agg/g' /etc/matplotlibrc && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
