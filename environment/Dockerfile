@@ -2,7 +2,7 @@
 FROM bjodah/bjodahimg16base:v1.1
 MAINTAINER Björn Dahlgren <bjodah@DELETEMEgmail.com>
 RUN \
-    apt-get update && apt-get --quiet --assume-yes --no-install-recommends install libboost-dbg && \
+    apt-get update && apt-get --quiet --assume-yes --no-install-recommends install libssl-dev libboost-dbg && \
     apt-get clean && \
     export PATH=/root/.local/bin:$PATH && mkdir -p /root/.local && cd /tmp && \
     wget --quiet https://www.python.org/ftp/python/3.4.5/Python-3.4.5.tgz -O py34.tgz && \
